@@ -12,6 +12,10 @@ public class Drawable {
 	protected double width;
 	protected double height;
 	protected Color color;
+	protected boolean withOutline = false;
+	protected boolean outlineInset = false;
+	protected Color outlineColor = null;
+	protected int outlineStrokeWidth = 1;
 	
 	protected Drawable(double x, double y, double w, double h, Color color) {
 		this.x = x;
@@ -19,6 +23,18 @@ public class Drawable {
 		this.width = w;
 		this.height = h;
 		this.color = color;
+	}
+	
+	protected Drawable(double x, double y, double w, double h, Color color, boolean oli, Color olc, int olw) {
+		this.x = x;
+		this.y = y;
+		width = w;
+		height = h;
+		this.color = color;
+		withOutline = true;
+		outlineInset = oli;
+		outlineColor = olc;
+		outlineStrokeWidth = olw;
 	}
 	
 	protected Drawable(double x, double y, double size, Color color) {
@@ -39,7 +55,4 @@ public class Drawable {
 	
 	public void draw(Graphics2D g2d) {}
 	
-	public void drawWithOutline(Graphics2D g2d, Color color, int thickness) {}
-	
-	public void drawWithOutline(Graphics2D g2d, Color color, int thickness, boolean inset) {}
 }
