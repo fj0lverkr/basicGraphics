@@ -1,13 +1,11 @@
-package Drawables;
+package drawables;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
+import java.awt.*;
+import javax.vecmath.Vector2d;
 
 public class Drawable {
 	protected double x;
 	protected double y;
-	protected double ex;
-	protected double ey;
 	protected double size;
 	protected double width;
 	protected double height;
@@ -16,6 +14,7 @@ public class Drawable {
 	protected boolean outlineInset = false;
 	protected Color outlineColor = null;
 	protected int outlineStrokeWidth = 1;
+	protected Vector2d[] linePoints;
 	
 	protected Drawable(double x, double y, double w, double h, Color color) {
 		this.x = x;
