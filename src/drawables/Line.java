@@ -1,4 +1,4 @@
-package Drawables;
+package drawables;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

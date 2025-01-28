@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import javax.swing.JFrame;
 
-import Drawables.*;
+import drawables.*;
 
 public class GraphicsDrawer {
 
@@ -13,11 +13,12 @@ public class GraphicsDrawer {
 		int h = 600;
 		
 		JFrame f = new JFrame();
-		GraphicsCanvas gc = new GraphicsCanvas(w, h, Color.CYAN, createDrawables());
+		GraphicsCanvas gc = new GraphicsCanvas(w, h, Color.CYAN);
 		f.setSize(w,h);
 		f.setTitle("Basic Java Graphics");
 		f.add(gc);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gc.setDrawables(createDrawables());
 		f.setVisible(true);
 	}
 	
@@ -28,7 +29,7 @@ public class GraphicsDrawer {
 				new Ellipse(10, 100, 80, 80, Color.YELLOW, true, Color.BLACK, 10),
 				new Ellipse(100, 100, 80, 80, Color.YELLOW, false, Color.BLACK, 10),
 				new Ellipse(190, 100, 80, 80, Color.YELLOW),
-				new Line(0, 95, 300, 95, 5, Color.BLUE)
+				new Line(0, 95, 300, 95, 5, Color.BLACK)
 		};
 	}
 

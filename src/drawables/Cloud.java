@@ -1,4 +1,4 @@
-package Drawables;
+package drawables;
 
 import java.awt.Color;
 import java.awt.Graphics2D;

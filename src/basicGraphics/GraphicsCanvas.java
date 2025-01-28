@@ -2,7 +2,7 @@ package basicGraphics;
 
 import javax.swing.*;
 
-import Drawables.*;
+import drawables.*;
 
 import java.awt.*;
 import java.awt.geom.*;
@@ -15,15 +15,22 @@ class GraphicsCanvas extends JComponent {
 	private Color bgColor;
 	private Drawable[] drawables;
 	
-	public GraphicsCanvas(int w, int h, Color bgc, Drawable[] d) {
+	public GraphicsCanvas(int w, int h, Color bgc) {
 		width = w;
 		height = h;
 		bgColor = bgc;
-		drawables = d;
 	}
 	
-	public GraphicsCanvas(int w,int h, Drawable[] d) {
-		this(w, h, Color.WHITE, d);
+	public GraphicsCanvas(int w,int h) {
+		this(w, h, Color.WHITE);
+	}
+	
+	public Drawable[] getDrawables() {
+		return drawables;
+	}
+	
+	public void setDrawables(Drawable[] d) {
+		drawables = d;
 	}
 
 	@Override
