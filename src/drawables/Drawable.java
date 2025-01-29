@@ -14,7 +14,8 @@ public class Drawable {
 	protected boolean outlineInset = false;
 	protected Color outlineColor = null;
 	protected int outlineStrokeWidth = 1;
-	protected Vector2d[] linePoints;
+	protected Vector2d[] points;
+	protected boolean closeLine = false;
 	
 	protected Drawable(double x, double y, double w, double h, Color color) {
 		this.x = x;
@@ -43,11 +44,19 @@ public class Drawable {
 		this.color = color;
 	}
 	
-	protected Drawable(double x, double y, double ex, double ey, double size, Color color) {
-		this.x = x;
-		this.y = y;
-		this.ey = ey;
-		this.ex = ex;
+	protected Drawable(Vector2d[] points, double size, Color color) {
+		this.x = points[0].x;
+		this.y = points[0].y;
+		this.points = points;
+		this.size = size;
+		this.color = color;
+	}
+	
+	protected Drawable(Vector2d[] points, boolean closeLine, double size, Color color) {
+		this.x = points[0].x;
+		this.y = points[0].y;
+		this.points = points;
+		this.closeLine = closeLine;
 		this.size = size;
 		this.color = color;
 	}
