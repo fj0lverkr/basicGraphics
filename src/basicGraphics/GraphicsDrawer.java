@@ -46,7 +46,7 @@ public class GraphicsDrawer {
 		
 		//Handles for p2's curves, needs one per point in the Line object.
 		h2.add(new MutablePair<Vector2d,Vector2d>(new Vector2d(-17, 35),new Vector2d(200, 30)));
-		//h2.add(new MutablePair<Vector2d,Vector2d>(new Vector2d(230, 35),new Vector2d(666, 130)));
+		h2.add(new MutablePair<Vector2d,Vector2d>(new Vector2d(230, 35),new Vector2d(666, 130)));
 
 		d.add(new Cloud(10, 15, 30, Color.YELLOW));
 		d.add(new Cloud(100, 10, 35, Color.GREEN));

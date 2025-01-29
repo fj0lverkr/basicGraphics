@@ -33,16 +33,25 @@ public class Line extends Drawable {
 		}
 		p1 = new Path2D.Double();
 		p1.moveTo(points.get(0).x, points.get(0).y);
-		if (bezierHandles.isEmpty()) {
-			for (int i = 1; i < points.size(); i++) {
+
+		for (int i = 1; i < points.size(); i++) {
+			if (bezierHandles.isEmpty()) {
 				p1.lineTo(points.get(i).x, points.get(i).y);
-			}
-		} else {
-			for (int i = 0; i < points.size(); i++) {
-				int j = i > 1 && i % 2 == 0 ? i-1 : i;
-				Vector2d h1 = bezierHandles.get(j).getLeft();
-				Vector2d h2 = bezierHandles.get(j).getRight();
-				p1.curveTo(h1.x, h1.y, h2.x, h2.y, points.get(i).x, points.get(i).y);
+			} else {
+				if (bezierHandles.size() >= points.size()) {
+					Vector2d h1 = bezierHandles.get(i - 1).getLeft();
+					Vector2d h2 = bezierHandles.get(i - 1).getRight();
+					p1.curveTo(h1.x, h1.y, h2.x, h2.y, points.get(i).x, points.get(i).y);
+				} else {
+					int diff = points.size() - bezierHandles.size();
+					if (i-1 >= diff) {
+						p1.lineTo(points.get(i).x, points.get(i).y);
+					} else {
+						Vector2d h1 = bezierHandles.get(i - 1).getLeft();
+						Vector2d h2 = bezierHandles.get(i - 1).getRight();
+						p1.curveTo(h1.x, h1.y, h2.x, h2.y, points.get(i).x, points.get(i).y);
+					}
+				}
 			}
 		}
 	}
