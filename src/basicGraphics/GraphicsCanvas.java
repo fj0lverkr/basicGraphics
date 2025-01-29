@@ -6,6 +6,7 @@ import drawables.*;
 
 import java.awt.*;
 import java.awt.geom.*;
+import java.util.List;
 
 class GraphicsCanvas extends JComponent {
 	private static final long serialVersionUID = -7420661734991984275L;
@@ -13,7 +14,7 @@ class GraphicsCanvas extends JComponent {
 	private int width;
 	private int height;
 	private Color bgColor;
-	private Drawable[] drawables;
+	private List<Drawable> drawables;
 	
 	public GraphicsCanvas(int w, int h, Color bgc) {
 		width = w;
@@ -25,11 +26,11 @@ class GraphicsCanvas extends JComponent {
 		this(w, h, Color.WHITE);
 	}
 	
-	public Drawable[] getDrawables() {
+	public List<Drawable> getDrawables() {
 		return drawables;
 	}
 	
-	public void setDrawables(Drawable[] d) {
+	public void setDrawables(List<Drawable> d) {
 		drawables = d;
 	}
 

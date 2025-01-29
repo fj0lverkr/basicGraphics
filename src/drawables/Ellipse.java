@@ -14,6 +14,11 @@ public class Ellipse extends Drawable {
 		e1 = new Ellipse2D.Double(x,y,width, height);
 	}
 	
+	public Ellipse(double x, double y, double w, double h, boolean fillShape, Color color) {
+		super(x, y, w, h,fillShape, color);
+		e1 = new Ellipse2D.Double(x,y,width, height);
+	}
+	
 	public Ellipse(double x, double y, double w, double h, Color color, boolean oli, Color olc, int olw) {
 		super(x,y,w,h,color,oli,olc,olw);
 		e1 = new Ellipse2D.Double(x,y,width, height);
@@ -23,7 +28,7 @@ public class Ellipse extends Drawable {
 	public void draw(Graphics2D g2d) {
 		if(withOutline) {
 			if(outlineInset) {
-				Ellipse e2 = new Ellipse(x, y, width, height, outlineColor);
+				Ellipse e2 = new Ellipse(x, y, width, height,true, outlineColor);
 				
 				e1.x = x + outlineStrokeWidth / 2;
 				e1.y = y + outlineStrokeWidth / 2;
@@ -33,7 +38,7 @@ public class Ellipse extends Drawable {
 				e2.draw(g2d);
 			} else {
 				double offset = outlineStrokeWidth / 2;
-				Ellipse e2 = new Ellipse(x-offset, y-offset, width+outlineStrokeWidth, height+outlineStrokeWidth, outlineColor);
+				Ellipse e2 = new Ellipse(x-offset, y-offset, width+outlineStrokeWidth, height+outlineStrokeWidth,true, outlineColor);
 				
 				e2.draw(g2d);
 			}
@@ -44,7 +49,11 @@ public class Ellipse extends Drawable {
 	private void drawBaseShape(Graphics2D g2d) {
 		g2d.setStroke(new BasicStroke());
 		g2d.setColor(color);
-		g2d.fill(e1);
+		if(fillShape) {
+			g2d.fill(e1);
+		} else {
+			g2d.draw(e1);
+		}
 	}
 
 }

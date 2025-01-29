@@ -2,6 +2,7 @@ package drawables;
 
 import java.awt.*;
 import javax.vecmath.Vector2d;
+import java.util.List;
 
 public class Drawable {
 	protected double x;
@@ -14,8 +15,9 @@ public class Drawable {
 	protected boolean outlineInset = false;
 	protected Color outlineColor = null;
 	protected int outlineStrokeWidth = 1;
-	protected Vector2d[] points;
+	protected List<Vector2d> points;
 	protected boolean closeLine = false;
+	protected boolean fillShape = false;
 	
 	protected Drawable(double x, double y, double w, double h, Color color) {
 		this.x = x;
@@ -25,6 +27,15 @@ public class Drawable {
 		this.color = color;
 	}
 	
+	protected Drawable(double x, double y, double w, double h, boolean fillShape, Color color) {
+		this.x = x;
+		this.y = y;
+		this.width = w;
+		this.height = h;
+		this.color = color;
+		this.fillShape = fillShape;
+	}
+	
 	protected Drawable(double x, double y, double w, double h, Color color, boolean oli, Color olc, int olw) {
 		this.x = x;
 		this.y = y;
@@ -32,6 +43,7 @@ public class Drawable {
 		height = h;
 		this.color = color;
 		withOutline = true;
+		fillShape = true;
 		outlineInset = oli;
 		outlineColor = olc;
 		outlineStrokeWidth = olw;
@@ -44,19 +56,29 @@ public class Drawable {
 		this.color = color;
 	}
 	
-	protected Drawable(Vector2d[] points, double size, Color color) {
-		this.x = points[0].x;
-		this.y = points[0].y;
+	protected Drawable(List<Vector2d> points, double size, Color color) {
+		this.x = points.get(0).x;
+		this.y = points.get(0).y;
 		this.points = points;
 		this.size = size;
 		this.color = color;
 	}
 	
-	protected Drawable(Vector2d[] points, boolean closeLine, double size, Color color) {
-		this.x = points[0].x;
-		this.y = points[0].y;
+	protected Drawable(List<Vector2d> points, boolean closeLine, double size, Color color) {
+		this.x = points.get(0).x;
+		this.y = points.get(0).y;
 		this.points = points;
 		this.closeLine = closeLine;
+		this.size = size;
+		this.color = color;
+	}
+	
+	protected Drawable(List<Vector2d> points, boolean closeLine, boolean fillShape, double size, Color color) {
+		this.x = points.get(0).x;
+		this.y = points.get(0).y;
+		this.points = points;
+		this.closeLine = closeLine;
+		this.fillShape = fillShape;
 		this.size = size;
 		this.color = color;
 	}
