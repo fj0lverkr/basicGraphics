@@ -14,7 +14,7 @@ import drawables.Drawable;
 import drawables.Ellipse;
 import drawables.Line;
 
-class GraphicsDemo {
+final class GraphicsDemo {
 	static void drawDemo(GraphicsCanvas gc) {
 		gc.setDrawables(createDrawables());
 	}
