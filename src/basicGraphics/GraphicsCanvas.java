@@ -33,6 +33,22 @@ class GraphicsCanvas extends JComponent {
 	public void setDrawables(List<Drawable> d) {
 		drawables = d;
 	}
+	
+	public void addDrawable(Drawable d) {
+		drawables.add(d);
+	}
+	
+	public void addDrawable(int index, Drawable d) {
+		drawables.add(index, d);
+	}
+	
+	public void removeDrawable(Drawable d) {
+		drawables.remove(d);
+	}
+	
+	public void removeDrawable(int index) {
+		drawables.remove(index);
+	}
 
 	@Override
 	protected void paintComponent(Graphics g) {
