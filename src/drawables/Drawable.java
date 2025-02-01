@@ -1,7 +1,10 @@
 package drawables;
 
-import java.awt.*;
+
 import javax.vecmath.Vector2d;
+
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.util.List;
 
 public abstract class Drawable {

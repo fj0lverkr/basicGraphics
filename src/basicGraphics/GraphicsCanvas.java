@@ -1,11 +1,14 @@
 package basicGraphics;
 
-import javax.swing.*;
+import javax.swing.JComponent;
 
-import drawables.*;
+import drawables.Drawable;
 
-import java.awt.*;
-import java.awt.geom.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.geom.Rectangle2D;
 import java.util.List;
 
 class GraphicsCanvas extends JComponent {
