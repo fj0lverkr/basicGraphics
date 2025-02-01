@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.vecmath.Vector2d;
 import java.util.List;
 
-public class Drawable {
+public abstract class Drawable {
 	protected double x;
 	protected double y;
 	protected double size;
