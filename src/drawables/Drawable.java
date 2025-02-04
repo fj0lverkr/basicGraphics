@@ -8,8 +8,8 @@ import java.awt.Graphics2D;
 import java.util.List;
 
 public abstract class Drawable {
-	protected double x;
-	protected double y;
+	public double x;
+	public double y;
 	protected double size;
 	protected double width;
 	protected double height;
@@ -87,5 +87,13 @@ public abstract class Drawable {
 	}
 	
 	public void draw(Graphics2D g2d) {}
+	
+	public double getWidth() {
+		return width;
+	}
+	
+	public double getHeight() {
+		return height;
+	}
 	
 }

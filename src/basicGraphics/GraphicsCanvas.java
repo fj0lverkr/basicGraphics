@@ -35,6 +35,7 @@ class GraphicsCanvas extends JComponent {
 	
 	public void setDrawables(List<Drawable> d) {
 		drawables = d;
+		repaint();
 	}
 	
 	public void addDrawable(Drawable d) {
@@ -66,8 +67,10 @@ class GraphicsCanvas extends JComponent {
 		g2d.setColor(bgColor);
 		g2d.fill(bg);
 		
-		for(Drawable d : drawables) {
-			d.draw(g2d);
+		if(drawables != null) {
+			for(Drawable d : drawables) {
+				d.draw(g2d);
+			}
 		}
 	}
 }

@@ -14,12 +14,33 @@ import drawables.Drawable;
 import drawables.Ellipse;
 import drawables.Line;
 
-final class GraphicsDemo {
-	static void drawDemo(GraphicsCanvas gc) {
+class GraphicsDemo extends GraphicsScene {
+	Cloud movingCloud;
+
+	GraphicsDemo(GraphicsCanvas gc) {
+		super(gc);
+		movingCloud = new Cloud(10, 15, 30, Color.YELLOW);
 		gc.setDrawables(createDrawables());
 	}
 
-	private static List<Drawable> createDrawables() {
+	void draw(double delta) {
+		List<Drawable> rgc = gc.getDrawables();
+
+		if (movingCloud.y < gc.getHeight()) {
+			movingCloud.y += 120 / delta;
+		} else {
+			if (movingCloud.x < gc.getWidth()) {
+				movingCloud.x += 200 / delta;
+			} else {
+				movingCloud.x = 0;
+			}
+			movingCloud.y = 0;
+		}
+
+		gc.setDrawables(rgc);
+	}
+
+	private List<Drawable> createDrawables() {
 		List<Vector2d> p1 = new ArrayList<Vector2d>(); // Points for straight line p1
 		List<Vector2d> p2 = new ArrayList<Vector2d>(); // Points for curved line p2
 		List<Pair<Vector2d, Vector2d>> h2 = new ArrayList<Pair<Vector2d, Vector2d>>(); // Bezier handles for line p2, h2
@@ -45,7 +66,7 @@ final class GraphicsDemo {
 																										// change the
 																										// drawing.
 
-		d.add(new Cloud(10, 15, 30, Color.YELLOW));
+		d.add(movingCloud);
 		d.add(new Cloud(100, 10, 35, Color.GREEN));
 		d.add(new Ellipse(10, 100, 80, 80, Color.YELLOW, true, Color.BLACK, 10));
 		d.add(new Ellipse(100, 100, 80, 80, Color.YELLOW, false, Color.BLACK, 10));

@@ -11,6 +11,7 @@ public class GraphicsWindow {
 	private Color background;
 	private JFrame f;
 	private GraphicsCanvas gc;
+	private GraphicsScene s;
 	private boolean isRunning = false;
 	
 	public GraphicsWindow(int w, int h) {
@@ -34,8 +35,15 @@ public class GraphicsWindow {
 		f.add(gc);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		//Initialize demo scene
+		s = new GraphicsDemo(gc);
+		
 		show();
 		isRunning = true;
+	}
+	
+	public GraphicsCanvas getCanvas() {
+		return gc;
 	}
 
 	public void show() {
@@ -46,8 +54,8 @@ public class GraphicsWindow {
 		f.setVisible(false);
 	}
 	
-	public void drawDemo() {
-		GraphicsDemo.drawDemo(gc);
+	public void drawDemo(double delta) {
+		s.draw(delta);
 	}
 	
 	public boolean isRunning() {
