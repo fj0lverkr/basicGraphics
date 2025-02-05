@@ -20,22 +20,21 @@ class GraphicsDemo extends GraphicsScene {
 	GraphicsDemo(GraphicsCanvas gc) {
 		super(gc);
 		movingCloud = new Cloud(10, 15, 30, Color.YELLOW);
+		movingCloud.velocity.x = 10;
+		movingCloud.velocity.y = 12;
 		gc.setDrawables(createDrawables());
 	}
 
 	void draw(double delta) {
 		List<Drawable> rgc = gc.getDrawables();
+		
+		if(movingCloud.position.x >= gc.getWidth() - movingCloud.getWidth() || movingCloud.position.x < 0)
+			movingCloud.velocity.x = -movingCloud.velocity.x;
+		
+		if(movingCloud.position.y >= gc.getHeight() - movingCloud.getHeight() || movingCloud.position.y < 0)
+			movingCloud.velocity.y = -movingCloud.velocity.y;
 
-		if (movingCloud.y < gc.getHeight()) {
-			movingCloud.y += 120 / delta;
-		} else {
-			if (movingCloud.x < gc.getWidth()) {
-				movingCloud.x += 200 / delta;
-			} else {
-				movingCloud.x = 0;
-			}
-			movingCloud.y = 0;
-		}
+		movingCloud.position.add(movingCloud.velocity);
 
 		gc.setDrawables(rgc);
 	}
@@ -66,7 +65,6 @@ class GraphicsDemo extends GraphicsScene {
 																										// change the
 																										// drawing.
 
-		d.add(movingCloud);
 		d.add(new Cloud(100, 10, 35, Color.GREEN));
 		d.add(new Ellipse(10, 100, 80, 80, Color.YELLOW, true, Color.BLACK, 10));
 		d.add(new Ellipse(100, 100, 80, 80, Color.YELLOW, false, Color.BLACK, 10));
@@ -74,6 +72,7 @@ class GraphicsDemo extends GraphicsScene {
 		d.add(new Ellipse(280, 100, 80, 80, true, Color.YELLOW));
 		d.add(new Line(p1, 5, Color.RED));
 		d.add(new Line(p2, h2, 3, Color.DARK_GRAY));
+		d.add(movingCloud); //This one moves around!
 
 		return d;
 

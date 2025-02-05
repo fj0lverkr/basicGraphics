@@ -1,6 +1,5 @@
 package drawables;
 
-
 import javax.vecmath.Vector2d;
 
 import java.awt.Color;
@@ -8,8 +7,8 @@ import java.awt.Graphics2D;
 import java.util.List;
 
 public abstract class Drawable {
-	public double x;
-	public double y;
+	public Vector2d position = new Vector2d();
+	public Vector2d velocity = new Vector2d();
 	protected double size;
 	protected double width;
 	protected double height;
@@ -21,79 +20,62 @@ public abstract class Drawable {
 	protected List<Vector2d> points;
 	protected boolean closeLine = false;
 	protected boolean fillShape = false;
-	
+
+	protected Drawable(double x, double y, double size, Color color) {
+		position.x = x;
+		position.y = y;
+		this.size = size;
+		this.color = color;
+	}
+
 	protected Drawable(double x, double y, double w, double h, Color color) {
-		this.x = x;
-		this.y = y;
+		position.x = x;
+		position.y = y;
 		this.width = w;
 		this.height = h;
 		this.color = color;
 	}
-	
+
 	protected Drawable(double x, double y, double w, double h, boolean fillShape, Color color) {
-		this.x = x;
-		this.y = y;
-		this.width = w;
-		this.height = h;
-		this.color = color;
+		this(x, y, w, h, color);
 		this.fillShape = fillShape;
 	}
-	
+
 	protected Drawable(double x, double y, double w, double h, Color color, boolean oli, Color olc, int olw) {
-		this.x = x;
-		this.y = y;
-		width = w;
-		height = h;
-		this.color = color;
+		this(x, y, w, h, true, color);
 		withOutline = true;
-		fillShape = true;
 		outlineInset = oli;
 		outlineColor = olc;
 		outlineStrokeWidth = olw;
 	}
-	
-	protected Drawable(double x, double y, double size, Color color) {
-		this.x = x;
-		this.y = y;
-		this.size = size;
-		this.color = color;
-	}
-	
+
 	protected Drawable(List<Vector2d> points, double size, Color color) {
-		this.x = points.get(0).x;
-		this.y = points.get(0).y;
+		this(points.get(0).x, points.get(0).y, size, color);
 		this.points = points;
-		this.size = size;
-		this.color = color;
 	}
-	
+
 	protected Drawable(List<Vector2d> points, boolean closeLine, double size, Color color) {
-		this.x = points.get(0).x;
-		this.y = points.get(0).y;
+		this(points.get(0).x, points.get(0).y, size, color);
 		this.points = points;
 		this.closeLine = closeLine;
-		this.size = size;
-		this.color = color;
 	}
-	
+
 	protected Drawable(List<Vector2d> points, boolean closeLine, boolean fillShape, double size, Color color) {
-		this.x = points.get(0).x;
-		this.y = points.get(0).y;
+		this(points.get(0).x, points.get(0).y, size, color);
 		this.points = points;
 		this.closeLine = closeLine;
 		this.fillShape = fillShape;
-		this.size = size;
-		this.color = color;
 	}
-	
-	public void draw(Graphics2D g2d) {}
-	
+
+	public void draw(Graphics2D g2d) {
+	}
+
 	public double getWidth() {
 		return width;
 	}
-	
+
 	public double getHeight() {
 		return height;
 	}
-	
+
 }
