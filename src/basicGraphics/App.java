@@ -21,7 +21,7 @@ public class App {
 	
 	private static void run(GraphicsWindow window) {
  		if(window.isRunning()) {
-			window.drawDemo(1000/TARGET_FPS);
+			window.drawDemo(1000/TARGET_FPS, false);
 		}
 	}
 

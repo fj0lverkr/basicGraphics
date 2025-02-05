@@ -1,28 +1,23 @@
 package basicGraphics;
 
-import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 import drawables.Drawable;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.geom.Rectangle2D;
 import java.util.List;
 
-class GraphicsCanvas extends JComponent {
+class GraphicsCanvas extends JPanel {
 	private static final long serialVersionUID = -7420661734991984275L;
-	
-	private int width;
-	private int height;
-	private Color bgColor;
 	private List<Drawable> drawables;
 	
 	public GraphicsCanvas(int w, int h, Color bgc) {
-		width = w;
-		height = h;
-		bgColor = bgc;
+		setPreferredSize(new Dimension(w, h));
+		setBackground(bgc);
 	}
 	
 	public GraphicsCanvas(int w,int h) {
@@ -55,17 +50,14 @@ class GraphicsCanvas extends JComponent {
 	}
 
 	@Override
-	protected void paintComponent(Graphics g) {
+	public void paint(Graphics g) {
+		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 		RenderingHints rh = new RenderingHints(
 				RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		Rectangle2D.Double bg = new Rectangle2D.Double(0,0,width,height); //Background color for window
-		
 		g2d.setRenderingHints(rh);
-		g2d.setColor(bgColor);
-		g2d.fill(bg);
 		
 		if(drawables != null) {
 			for(Drawable d : drawables) {
