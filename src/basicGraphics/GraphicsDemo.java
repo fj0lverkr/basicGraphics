@@ -20,8 +20,8 @@ class GraphicsDemo extends GraphicsScene {
 	GraphicsDemo(GraphicsCanvas gc) {
 		super(gc);
 		movingCloud = new Cloud(10, 15, 30, Color.YELLOW);
-		movingCloud.velocity.x = 10;
-		movingCloud.velocity.y = 12;
+		movingCloud.velocity.x = 100;
+		movingCloud.velocity.y = 150;
 		gc.setDrawables(createDrawables());
 	}
 
@@ -33,7 +33,9 @@ class GraphicsDemo extends GraphicsScene {
 		
 		if(movingCloud.position.y >= gc.getHeight() - movingCloud.getHeight() || movingCloud.position.y < 0)
 			movingCloud.velocity.y = -movingCloud.velocity.y;
-
+		
+		movingCloud.velocity.normalize();
+		movingCloud.velocity.scale(delta);
 		movingCloud.position.add(movingCloud.velocity);
 
 		gc.setDrawables(rgc);
