@@ -36,7 +36,7 @@ public class GraphicsWindow {
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setLocationRelativeTo(null);
 		
-		//Initialize demo scene
+		//Initialise demo scene
 		s = new GraphicsDemo(gc);
 		
 		show();
@@ -56,7 +56,8 @@ public class GraphicsWindow {
 	}
 	
 	public void drawDemo(double delta, boolean once) {
-		s.draw(delta);
+		s.update(delta);
+		s.draw();
 		isRunning = !once;
 	}
 	

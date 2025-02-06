@@ -11,7 +11,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.util.List;
 
-class GraphicsCanvas extends JPanel {
+public class GraphicsCanvas extends JPanel {
 	private static final long serialVersionUID = -7420661734991984275L;
 	private List<Drawable> drawables;
 	

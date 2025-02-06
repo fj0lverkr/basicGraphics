@@ -9,35 +9,34 @@ import javax.vecmath.Vector2d;
 import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
-import drawables.Cloud;
+import drawables.Rectangle;
 import drawables.Drawable;
 import drawables.Ellipse;
 import drawables.Line;
 
 class GraphicsDemo extends GraphicsScene {
-	Cloud movingCloud;
+	Rectangle movingRect;
+	List<Drawable> rgc;
 
 	GraphicsDemo(GraphicsCanvas gc) {
 		super(gc);
-		movingCloud = new Cloud(10, 15, 30, Color.YELLOW);
-		movingCloud.velocity.x = 100;
-		movingCloud.velocity.y = 150;
+		movingRect = new Rectangle(10, 15, 30, Color.YELLOW, gc);
+		movingRect.velocity.x = 100;
+		movingRect.velocity.y = 150;
 		gc.setDrawables(createDrawables());
 	}
 
-	void draw(double delta) {
-		List<Drawable> rgc = gc.getDrawables();
+	@Override
+	void update(double delta) {
 		
-		if(movingCloud.position.x >= gc.getWidth() - movingCloud.getWidth() || movingCloud.position.x < 0)
-			movingCloud.velocity.x = -movingCloud.velocity.x;
-		
-		if(movingCloud.position.y >= gc.getHeight() - movingCloud.getHeight() || movingCloud.position.y < 0)
-			movingCloud.velocity.y = -movingCloud.velocity.y;
-		
-		movingCloud.velocity.normalize();
-		movingCloud.velocity.scale(delta);
-		movingCloud.position.add(movingCloud.velocity);
+		rgc = gc.getDrawables();
+		for(Drawable d : rgc) {
+			d.update(delta);
+		}
+	}
 
+	@Override
+	void draw() {
 		gc.setDrawables(rgc);
 	}
 
@@ -67,14 +66,14 @@ class GraphicsDemo extends GraphicsScene {
 																										// change the
 																										// drawing.
 
-		d.add(new Cloud(100, 10, 35, Color.GREEN));
-		d.add(new Ellipse(10, 100, 80, 80, Color.YELLOW, true, Color.BLACK, 10));
-		d.add(new Ellipse(100, 100, 80, 80, Color.YELLOW, false, Color.BLACK, 10));
-		d.add(new Ellipse(190, 100, 80, 80, Color.YELLOW));
-		d.add(new Ellipse(280, 100, 80, 80, true, Color.YELLOW));
-		d.add(new Line(p1, 5, Color.RED));
-		d.add(new Line(p2, h2, 3, Color.DARK_GRAY));
-		d.add(movingCloud); //This one moves around!
+		d.add(new Rectangle(100, 10, 35, Color.GREEN, gc));
+		d.add(new Ellipse(10, 100, 80, 80, Color.YELLOW, true, Color.BLACK, 10, gc));
+		d.add(new Ellipse(100, 100, 80, 80, Color.YELLOW, false, Color.BLACK, 10, gc));
+		d.add(new Ellipse(190, 100, 80, 80, Color.YELLOW, gc));
+		d.add(new Ellipse(280, 100, 80, 80, true, Color.YELLOW, gc));
+		d.add(new Line(p1, 5, Color.RED, gc));
+		d.add(new Line(p2, h2, 3, Color.DARK_GRAY, gc));
+		d.add(movingRect); // This one moves around!
 
 		return d;
 
