@@ -20,7 +20,7 @@ class GraphicsDemo extends GraphicsScene {
 
 	GraphicsDemo(GraphicsCanvas gc) {
 		super(gc);
-		movingRect = new Rectangle(10, 15, 30, Color.YELLOW, gc);
+		movingRect = new Rectangle(10, 15, 30, Color.BLACK, true, Color.RED, 10, gc);
 		movingRect.velocity.x = 100;
 		movingRect.velocity.y = 150;
 		gc.setDrawables(createDrawables());
@@ -66,7 +66,7 @@ class GraphicsDemo extends GraphicsScene {
 																										// change the
 																										// drawing.
 
-		d.add(new Rectangle(100, 10, 35, Color.GREEN, gc));
+		d.add(new Rectangle(100, 10, 35, true, Color.GREEN, gc));
 		d.add(new Ellipse(10, 100, 80, 80, Color.YELLOW, true, Color.BLACK, 10, gc));
 		d.add(new Ellipse(100, 100, 80, 80, Color.YELLOW, false, Color.BLACK, 10, gc));
 		d.add(new Ellipse(190, 100, 80, 80, Color.YELLOW, gc));
