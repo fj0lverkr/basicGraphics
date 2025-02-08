@@ -15,6 +15,7 @@ import drawables.Ellipse;
 import drawables.Line;
 
 class GraphicsDemo extends GraphicsScene {
+	private static final long serialVersionUID = 1L;
 	Rectangle movingRect;
 	List<Drawable> rgc;
 
@@ -27,10 +28,9 @@ class GraphicsDemo extends GraphicsScene {
 	}
 
 	@Override
-	void update(double delta) {
-		
+	public void update(double delta) {
 		rgc = gc.getDrawables();
-		for(Drawable d : rgc) {
+		for (Drawable d : rgc) {
 			d.update(delta);
 		}
 	}
