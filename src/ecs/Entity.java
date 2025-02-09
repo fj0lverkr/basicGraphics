@@ -1,4 +1,4 @@
-package ECS;
+package ecs;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,18 +11,26 @@ public abstract class Entity implements Serializable {
 	private Entity parent;
 	public boolean uniqueInScene;
 	
-	public Entity(Entity parent, boolean uniqueInScene) {
-		this.parent = parent;
+	public Entity(boolean uniqueInScene) {
 		components = new ArrayList<Component>();
 		this.uniqueInScene = uniqueInScene;
 	}
 
-	public Entity(Entity parent) {
-		this(parent, false);
+	public Entity() {
+		this(false);
 	}
 	
 	public Entity getParent() {
 		return parent;
+	}
+	
+	public boolean setParent(Entity p) {
+		if(getParent() == null) {
+			parent = p;
+			return true;
+		}
+		
+		return false;
 	}
 
 	public boolean addComponent(Component c) {

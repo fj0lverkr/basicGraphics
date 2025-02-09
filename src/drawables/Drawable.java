@@ -7,11 +7,13 @@ import java.awt.Graphics2D;
 import java.util.List;
 
 import basicGraphics.GraphicsCanvas;
+import ecs.Component;
 
-public abstract class Drawable {
+public abstract class Drawable extends Component{
+	private static final long serialVersionUID = 1L;
 	public Vector2d position = new Vector2d();
 	public Vector2d velocity = new Vector2d();
-	protected GraphicsCanvas parentCanvas;
+	public GraphicsCanvas parentCanvas;
 	protected double size;
 	protected double width;
 	protected double height;

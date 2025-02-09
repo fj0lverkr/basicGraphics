@@ -8,6 +8,7 @@ import java.awt.geom.Rectangle2D;
 import basicGraphics.GraphicsCanvas;
 
 public class Rectangle extends Drawable {
+	private static final long serialVersionUID = 1L;
 	private Rectangle2D.Double r1;
 
 	public Rectangle(double x, double y, double width, double height, Color color, GraphicsCanvas parentCanvas) {

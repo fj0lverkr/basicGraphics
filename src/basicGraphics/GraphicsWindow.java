@@ -3,6 +3,8 @@ package basicGraphics;
 import java.awt.Color;
 import javax.swing.JFrame;
 
+import ecs.entities.GraphicsScene;
+
 public class GraphicsWindow {
 	
 	private int width;

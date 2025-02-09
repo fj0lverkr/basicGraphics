@@ -1,31 +1,33 @@
-package basicGraphics;
+package ecs.entities;
 
 import java.util.List;
 
-import ECS.Entity;
+import basicGraphics.GraphicsCanvas;
+import ecs.Entity;
 
-abstract class GraphicsScene extends Entity{
+public abstract class GraphicsScene extends Entity{
 	private static final long serialVersionUID = 1L;
 	protected GraphicsCanvas gc;
 	private List<Entity> entities;
 
 	
-	GraphicsScene(GraphicsCanvas gc) {
-		super(null, true);
+	public GraphicsScene(GraphicsCanvas gc) {
+		super(true);
 		this.gc = gc;
 	}
 
 	public abstract void update(double delta);
 
-	abstract void draw();
+	public abstract void draw();
 	
-	protected void addEntity(Entity e) {
+	public void addEntity(Entity e) {
 		if(e.uniqueInScene && getEntityByClass(e.getClass()) != null)
 			return;
-		entities.add(e);
+		if(e.setParent(this))
+			entities.add(e);
 	}
 	
-	protected Entity getEntityByClass(Class<? extends Entity> className) {
+	public Entity getEntityByClass(Class<? extends Entity> className) {
 		for(Entity e : entities) {
 			if(e.getClass() == className)
 				return e;

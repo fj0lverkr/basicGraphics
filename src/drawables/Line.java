@@ -14,6 +14,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import basicGraphics.GraphicsCanvas;
 
 public class Line extends Drawable {
+	private static final long serialVersionUID = 1L;
 	private Path2D.Double p1;
 	private List<Pair<Vector2d, Vector2d>> bezierHandles = new ArrayList<Pair<Vector2d, Vector2d>>();
 

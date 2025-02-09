@@ -8,7 +8,7 @@ import java.awt.geom.Ellipse2D;
 import basicGraphics.GraphicsCanvas;
 
 public class Ellipse extends Drawable {
-
+	private static final long serialVersionUID = 1L;
 	private Ellipse2D.Double e1;
 
 	public Ellipse(double x, double y, double w, double h, Color color, GraphicsCanvas parentCanvas) {

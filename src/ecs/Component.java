@@ -1,13 +1,13 @@
-package ECS;
+package ecs;
 
 import java.io.Serializable;
 
 public abstract class Component implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private Entity linkedEntity;
+	protected Entity linkedEntity;
 	
-	Entity getEntity() {
+	public Entity getEntity() {
 		return linkedEntity;
 	}
 	

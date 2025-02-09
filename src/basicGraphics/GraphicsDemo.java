@@ -1,6 +1,7 @@
 package basicGraphics;
 
 import java.awt.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
 import drawables.Rectangle;
+import ecs.entities.GraphicsScene;
 import drawables.Drawable;
 import drawables.Ellipse;
 import drawables.Line;
@@ -36,7 +38,7 @@ class GraphicsDemo extends GraphicsScene {
 	}
 
 	@Override
-	void draw() {
+	public void draw() {
 		gc.setDrawables(rgc);
 	}
 
